@@ -1,0 +1,61 @@
+
+<div class="col-md-4">
+<form class="form-horizontal">
+    <h3>Add a new role</h3>
+    <div class="form-group">
+        <label for="nameInput">Role Name:</label>
+        <input type="text" class="form-control" id="nameInput" placeholder="Enter name" ng-model="role.name">
+    </div>
+
+    <div class="form-group">
+        <label for="descriptionInput">Role Description</label>
+        <input type="text" class="form-control" id="descriptionInput" placeholder="Enter description here" ng-model="role.description">
+    </div>
+
+        <div class="form-group">
+            <label>Valid from</label>
+            <p class="input-group">
+                <input type="text" class="form-control" datepicker-popup="MM/dd/yyyy" ng-model="role.validFromDt" is-open="opened1"  close-text="Close" />
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open1($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </p>
+        </div>
+
+
+        <div class="form-group">
+            <label>Valid To</label>
+            <p class="input-group">
+                <input type="text" class="form-control" datepicker-popup="MM/dd/yyyy" ng-model="role.validToDt" is-open="opened2" close-text="Close" />
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open2($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </p>
+        </div>
+
+    <button type="submit" class="btn btn-primary" ng-click="add(role)">Add</button>
+</form>
+</div>
+
+<div class="col-md-8">
+    <table class="table table-bordered table-responsive">
+        <thead>
+            <tr class="bg-primary">
+                <td>Role name</td>
+                <td>Role description</td>
+                <td>Valid from</td>
+                <td>Valid to</td>
+            </tr>
+        </thead>
+        <tbody >
+            <tr ng-repeat="role in roles">
+                <td>{{role.name}}</td>
+                <td>{{role.description}}</td>
+                <td>{{role.validFromDt | date:"MM-dd-yyyy"}}</td>
+                <td>{{role.validToDt | date:"MM-dd-yyyy"}}</td>
+                <td><span class="glyphicon glyphicon-trash" ng-click="removeRole(param)"></span></td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
